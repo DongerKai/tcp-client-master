@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: tcp-client-master
+  profiles:
+    active: dev
+
+rest-client:
+  max-total: 500
+  max-per-route: 50
+  max-idle-time: 60  # 最大空闲时间（定期清理时间-清理定期和空闲连接）  单位 秒
+  connect-timeout: 10000 #单位 毫秒
+  read-timeout: 10000  #单位 毫秒
+  wait-timeout: 10000  #单位 毫秒
+
+logging:
+  file: log/${tcp-client-master.name}.log
+
+tcp-client-master:
+  name: tcp-client-master
+  addresses: 192.168.1.75:6601
+  url: 'http://%s/${tcp-client-master.url-path}'
+  url-path: ClientStartService
+  server:
+    ip: 192.168.1.67
+    port: 6668
+    connections: 1000
+    msg: 7e0200003f000004021895000b00000000000400030158ccaa06cb79f500950000000016010516541501040000697402020000030200002504000000002b040000000030010031010b3201467c7e
+    cycle-times: 1000
+    threads: 100
