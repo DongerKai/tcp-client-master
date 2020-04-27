@@ -17,13 +17,13 @@ logging:
 
 tcp-client-master:
   name: tcp-client-master
-  addresses: 192.168.1.75:6601
+  addresses: 192.168.1.75:6601,192.168.2.91:6601,192.168.1.241:6601
   url: 'http://%s/${tcp-client-master.url-path}'
   url-path: ClientStartService
   server:
     ip: 192.168.1.67
     port: 6668
-    connections: 1000
+    connections: 300
     msg: 7e0200003f000004021895000b00000000000400030158ccaa06cb79f500950000000016010516541501040000697402020000030200002504000000002b040000000030010031010b3201467c7e
-    cycle-times: 1000
+    cycle-times: 10000
     threads: 100
